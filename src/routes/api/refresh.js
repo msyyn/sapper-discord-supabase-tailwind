@@ -34,8 +34,8 @@ export async function post(req, res) {
 		}
 
 		if (response) {
-			const access_token_expires = new Date(Date.now() + response.expires_in);
-			const refresh_token_expires = new Date(Date.now() + response.expires_in);
+			const access_token_expires = new Date(Date.now() + response.expires_in); // 10 minutes
+			const refresh_token_expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 days
 			const cookie_options = { httpOnly: true, secure: false, sameSite: 'strict' };
 
 			res.cookie('discoToken', response.access_token, { expires: access_token_expires, ...cookie_options });

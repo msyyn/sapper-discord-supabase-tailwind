@@ -32,8 +32,8 @@ export async function get(req, res) {
   // store tokens in cookies
   const access_token = response.access_token;
   const refresh_token = response.refresh_token;
-  const access_token_expires = new Date(Date.now() + response.expires_in * 1000);
-  const refresh_token_expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+  const access_token_expires = new Date(Date.now() + response.expires_in); // 10 minutes
+  const refresh_token_expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 days
   const cookie_options = { httpOnly: true, secure: false, sameSite: 'strict' };
 
   res.cookie('discoToken', access_token, { expries: access_token_expires, ...cookie_options });

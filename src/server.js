@@ -24,11 +24,13 @@ express()
         const request = await fetch(`${DISCORD_API_URL}/users/@me`, {
           headers: { 'Authorization': `Bearer ${req.cookies['discoToken']}` }
         });
+
+        // returns a discord user if JWT was valid
         let results = await request.json();
 
 				if (results.id) {
 					return { 
-            userToken: req.cookies['discoToken'],
+            userToken: req.cookies['discoToken'], // user token get's saved to session
             discordUser: results // discord user get's saved to session
          };
 				}

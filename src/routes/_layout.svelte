@@ -51,7 +51,7 @@
 	}
 </style>
 
-<Nav {userToken} {segment}/>
+<Nav {segment}/>
 
 <main>
 	<slot></slot>
